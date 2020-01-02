@@ -116,10 +116,13 @@
 	}
 	
 	gen_sprite();
-	//init([11,13]);
-	//init([6,12,18]);
 	init([6,8,16,18]);
 	draw();
+
+	let KeyQ=keyboard("q"); KeyQ.press= ()=>{init([11,13]);draw();}
+	let KeyW=keyboard("w"); KeyW.press= ()=>{init([6,12,18]);draw();}
+	let KeyE=keyboard("e"); KeyE.press= ()=>{init([6,8,16,18]);draw();}
+	
 
 	let UP=keyboard("ArrowUp");
 	let DOWN=keyboard("ArrowDown");
@@ -140,6 +143,8 @@
 		}
 		draw();
 	};
+	
+	
   </script>
 </body>
 </html>
