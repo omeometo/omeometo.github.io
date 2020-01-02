@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Multi-Slide Puzzle</title>
+</head>
+  <script src="pixi.min.js"></script>
+<body>
+  <script type="text/javascript">
+	let type = "WebGL"
+	if(!PIXI.utils.isWebGLSupported()){
+	  type = "canvas"
+	}
+	let app=new PIXI.Application({width:320, height:320});
+	document.body.appendChild(app.view);
+	//////////////////////////////////////////
+	function keyboard(value) {
+	  let key = {};
+	  key.value = value;
+	  key.isDown = false;
+	  key.isUp = true;
+	  key.press = undefined;
+	  key.release = undefined;
+	  //The `downHandler`
+	  key.downHandler = event => {
+		if (event.key === key.value) {
+		  if (key.isUp && key.press) key.press();
+		  key.isDown = true;
+		  key.isUp = false;
+		  event.preventDefault();
+		}
+	  };
+
+	  //The `upHandler`
+	  key.upHandler = event => {
+		if (event.key === key.value) {
+		  if (key.isDown && key.release) key.release();
+		  key.isDown = false;
+		  key.isUp = true;
+		  event.preventDefault();
+		}
+	  };
+
+	  //Attach event listeners
+	  const downListener = key.downHandler.bind(key);
+	  const upListener = key.upHandler.bind(key);
+	  
+	  window.addEventListener(
+		"keydown", downListener, false
+	  );
+	  window.addEventListener(
+		"keyup", upListener, false
+	  );
+	  
+	  // Detach event listeners
+	  key.unsubscribe = () => {
+		window.removeEventListener("keydown", downListener);
+		window.removeEventListener("keyup", upListener);
+	  };
+	  
+	  return key;
+	}
+	//////////////////////////////////////////
+	
+	let N=5;
+	let board=new Array(N*N);
+	
+	let sp=new Array(N*N);
+	function gen_sprite(){
+		for(let i=0;i<N*N;i++){
+			sp[i] = new PIXI.Text((""+(101+i)).substr(1,2), {fill:0xffffff, fontFamily: "Courier New", fontSize:48, align:"center"});
+			app.stage.addChild(sp[i]);
+		}
+	}
+	
+	function init(holes){
+		for(let i=0;i<N;i++){
+			for(let j=0;j<N;j++){
+				board[i*N+j]=i*N+j+1;
+			}
+		}
+		for(let i=0;i<holes.length;i++)board[holes[i]]=0;
+		draw();
+	}
+	
+	function move(dx, dy){
+		let can_move=true;
+		let is_hole=new Array(25);
+		for(let i=0;i<N*N;i++){
+			if(board[i]==0){
+				is_hole[i]=true;
+				let p=i%N+dx,q=Math.floor(i/N)+dy
+				if(p<0||p>=N||q<0||q>=N)can_move=false;
+			}
+		}
+		if(can_move){
+			for(let i=0;i<N*N;i++){
+				if(is_hole[i]){
+					let j=i+dx+dy*N;
+					board[i]=board[j];
+					board[j]=0;
+				}
+			}
+		}
+	}
+	
+	function draw(){
+		for(let i=0;i<N*N;i++)sp[i].visible=false;
+		for(let i=0;i<N*N;i++){
+			if(board[i]!=0){
+				sp[board[i]-1].visible=true;
+				sp[board[i]-1].x=(i%N)*64;
+				sp[board[i]-1].y=Math.floor(i/N)*64;
+			}
+		}
+	}
+	
+	gen_sprite();
+	//init([11,13]);
+	//init([6,12,18]);
+	init([6,8,16,18]);
+	draw();
+
+	let UP=keyboard("ArrowUp");
+	let DOWN=keyboard("ArrowDown");
+	let LEFT=keyboard("ArrowLeft");
+	let RIGHT=keyboard("ArrowRight");
+	UP.press = ()=>{move(0,1);draw();};
+	DOWN.press = ()=>{move(0,-1);draw();};
+	LEFT.press = ()=>{move(1,0);draw();};
+	RIGHT.press = ()=>{move(-1,0);draw();};
+
+	let SHUFFLE=keyboard("Enter");
+	SHUFFLE.press = ()=>{
+		for(let t=0;t<1000;t++){
+			let r=Math.floor(Math.random()*4);
+			let dx=[1,0,-1,0][r];
+			let dy=[0,1,0,-1][r];
+			move(dx,dy);
+		}
+		draw();
+	};
+  </script>
+</body>
+</html>
