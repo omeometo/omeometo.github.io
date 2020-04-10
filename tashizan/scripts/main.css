@@ -1,0 +1,60 @@
+body{
+    background-color: #666;
+}
+
+p{
+    font-family: 'Roboto Mono', monospace;
+    font-weight: "400";
+}
+
+div#equations{
+    font-size: 32px;
+    margin: 0px;
+    float: left;
+}
+
+p#prev_equation{
+    width: 200px;
+    height: 60px;
+    color: #666;
+    background-color: black;
+    line-height: 60px;
+    padding: 0px 10px;
+    margin: 0px;
+}
+
+p#cur_equation{
+    width: 200px;
+    height: 180px;
+    color: white;
+    background-color: black;
+    line-height: 60px;
+    padding: 0px 10px;
+    margin: 0px;
+}
+
+div#info{
+    margin: 0px;
+    background-color: #333;
+    float: left;
+}
+
+p#countdown{
+    text-align: center;
+    width: 100px;
+    height: 80px;
+    color: red;
+    padding: 0;
+    font-size: 64px;
+    margin: 0px;
+}
+
+p#score{
+    text-align: center;
+    width: 100px;
+    height: 160px;
+    color: #666;
+    padding: 0;
+    font-size: 20px;
+    margin: 0px;
+}
