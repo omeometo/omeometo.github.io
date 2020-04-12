@@ -1,0 +1,52 @@
+body{
+    background-color: black;
+}
+p#digits{
+    width: 600px;
+    height: 100px;
+    margin: 0 auto 0 auto;
+    padding: 0 auto;
+}
+p#lamps{
+    width: 600px;
+    height: 100px;
+    margin: 0 auto 0 auto;
+    padding: 0 auto;
+    background-color: black;
+}
+p#clear{
+    font-family: 'Gotu', sans-serif;
+    font-weight: "400";
+    font-size: 48px;
+    text-align: center;
+    color: #6F6;
+}
+
+
+span.d{
+    display: inline-block;
+    font-family: 'Gotu', sans-serif;
+    font-weight: "400";
+    font-size: 72px;
+    margin: 0;
+    padding: 0;
+    width: 75px;
+    color: white;
+    text-align: center;
+}
+
+span.spacer{
+    display: inline-block;
+    width:75px;
+}
+span.l{
+    display: inline-block;
+    font-family: 'Gotu', sans-serif;
+    font-weight: "400";
+    font-size: 96px;
+    width: 150px;
+    text-align: center;
+    color:white;
+}
+
+
