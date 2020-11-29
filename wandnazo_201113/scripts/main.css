@@ -60,9 +60,9 @@ div#gameboard_congrats{
 span.lhs{
     display: inline-block;
     width: 64px;
-    font-family: 'Source Code Pro', sans-serif;
-    font-weight: "200";
-    font-size: 48px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: "400";
+    font-size: 40px;
     text-align: center;
     vertical-align: middle;
     border-style: solid;
@@ -74,15 +74,15 @@ span.gt{
     width: 96px;
     font-family: 'Source Code Pro', sans-serif;
     font-weight: "600";
-    font-size: 48px;
+    font-size: 60px;
     text-align: center;
     vertical-align: middle;
     color: #0f0;
 }
 
 span.rhs{
-    font-family: 'Source Code Pro', sans-serif;
-    font-weight: "200";
-    font-size: 48px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: "400";
+    font-size: 40px;
     vertical-align: middle;
 }
