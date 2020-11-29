@@ -5,8 +5,8 @@ body{
 div#gameboard{
     margin: auto;
     display: grid;
-    grid-template-rows: 400px 50px 50px;
-    grid-template-columns: 400px 50px;
+    grid-template-rows: 600px 50px 50px;
+    grid-template-columns: 450px 50px;
 }
 
 div#gameboard_main{
@@ -21,7 +21,7 @@ div#gameboard_moves{
     margin: 0;
     padding: 0;
     font-family: 'Source Code Pro', sans-serif;
-    font-size: 28px;
+    font-size: 40px;
     grid-row: 1;
     grid-column: 2;
 }
@@ -33,7 +33,7 @@ div#gameboard_info{
 
 div#gameboard_progress{
     margin: auto;
-    height: 20px;
+    height: 30px;
     width: 400px;
     background-color: black;
     border-style: solid;
@@ -43,7 +43,7 @@ div#gameboard_progress{
 
 div#progress_bar{
     width: 0%;
-    height: 20px;
+    height: 30px;
     background-color: #0f0;
 }
 
@@ -59,10 +59,10 @@ div#gameboard_congrats{
 
 span.lhs{
     display: inline-block;
-    width: 48px;
+    width: 64px;
     font-family: 'Source Code Pro', sans-serif;
     font-weight: "200";
-    font-size: 32px;
+    font-size: 48px;
     text-align: center;
     vertical-align: middle;
     border-style: solid;
@@ -74,7 +74,7 @@ span.gt{
     width: 96px;
     font-family: 'Source Code Pro', sans-serif;
     font-weight: "600";
-    font-size: 32px;
+    font-size: 48px;
     text-align: center;
     vertical-align: middle;
     color: #0f0;
@@ -83,6 +83,6 @@ span.gt{
 span.rhs{
     font-family: 'Source Code Pro', sans-serif;
     font-weight: "200";
-    font-size: 32px;
+    font-size: 48px;
     vertical-align: middle;
 }
